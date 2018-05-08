@@ -2,7 +2,7 @@
 /* eslint-disable  no-console */
 
 const Alexa = require('ask-sdk-core');
-const { randomResponse, intentHandlers = require('ask-utils')
+const { randomResponse, intentHandlers } = require('ask-utils')
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
