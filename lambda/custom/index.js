@@ -2,13 +2,14 @@
 /* eslint-disable  no-console */
 
 const Alexa = require('ask-sdk-core');
+const { randomResponse, intentHandlers = require('ask-utils')
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
+    return intentHandlers.canHandle(handlerInput, 'LaunchRequest')
   },
   handle(handlerInput) {
-    const speechText = 'Welcome to the Alexa Skills Kit, you can say hello!';
+    const speechText = 'ワードキャンプ大阪スキルへようこそ。ランチ情報とか聞けるよ。';
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -18,17 +19,16 @@ const LaunchRequestHandler = {
   },
 };
 
-const HelloWorldIntentHandler = {
+const AskLunchIntentHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
+    return intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AskLunchIntent')
   },
   handle(handlerInput) {
-    const speechText = 'Hello World!';
+    const speechText = 'スタバでも行けばいいんじゃないかな。';
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('準備中やねん', speechText)
       .getResponse();
   },
 };
@@ -95,7 +95,7 @@ const skillBuilder = Alexa.SkillBuilders.custom();
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
-    HelloWorldIntentHandler,
+    AskLunchIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
