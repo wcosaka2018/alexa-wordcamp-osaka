@@ -1,0 +1,62 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "ワードキャンプ大阪ガイド",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AskLanchIntent",
+          "slots": [
+            {
+              "name": "lanchType",
+              "type": "AMAZON.Food"
+            }
+          ],
+          "samples": [
+            "{lanchType} 食べたい",
+            "近くに {lanchType} のあるお店ある",
+            "近くに {lanchType} のあるお店ない",
+            "近くに {lanchType} のあるお店",
+            "近くに {lanchType} のあるお店を教えて",
+            "近くの  {lanchType} なお店",
+            "近くの  {lanchType} のお店",
+            "近くのお店どこ",
+            "近くにお店ない",
+            "近くのお店を教えて",
+            "近くのお店",
+            "{lanchType} のが食べれるお店を教えて",
+            "{lanchType} のあるお店を教えて",
+            "{lanchType} のあるお店",
+            "{lanchType} が食べれるお店",
+            "{lanchType} のお店",
+            "{lanchType} のお店ない",
+            "{lanchType} のお店ある",
+            "{lanchType} のお店を教えて",
+            "お昼のおすすめ教えて",
+            "お昼いいとこない",
+            "お昼いいところない",
+            "お昼どこがいい",
+            "ランチ行きたいんやけど",
+            "ランチ行きたいんだけど",
+            "ランチいきたい",
+            "ランチできるところを教えて",
+            "お昼を食べれるお店を教えて",
+            "お昼を食べれるお店",
+            "お昼ご飯を食べたい"
+          ]
+        }
+      ]
+    }
+  }
+}

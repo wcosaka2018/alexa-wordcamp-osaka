@@ -1,7 +1,7 @@
 {
   "deploy_settings": {
     "wco2018": {
-      "skill_id": "",
+      "skill_id": "amzn1.ask.skill.19d9db2b-af3c-4dfb-ae84-ddfb3a8ceb40",
       "was_cloned": false,
       "merge": {
         "manifest": {

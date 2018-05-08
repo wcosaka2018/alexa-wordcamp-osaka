@@ -2,21 +2,10 @@
   "manifest": {
     "publishingInformation": {
       "locales": {
-        "en-US": {
-          "summary": "Sample Short Description",
-          "examplePhrases": [
-            "Alexa open hello world",
-            "Alexa tell hello world hello",
-            "Alexa ask hello world say hello"
-          ],
-          "name": "wordcamp-osaka-2018",
-          "description": "Sample Full Description"
+        "ja-JP": {
+          "name": "ワードキャンプ大阪ガイド"
         }
-      },
-      "isAvailableWorldwide": true,
-      "testingInstructions": "Sample Testing Instructions.",
-      "category": "EDUCATION_AND_REFERENCE",
-      "distributionCountries": []
+      }
     },
     "apis": {
       "custom": {
