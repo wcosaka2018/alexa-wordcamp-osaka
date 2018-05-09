@@ -4,6 +4,25 @@
 const Alexa = require('ask-sdk-core');
 const { randomResponse, intentHandlers } = require('ask-utils')
 
+const ASK_ANY_MORE_TEXT = '他に聞きたいことはありますか？'
+
+const getAskAnyMoreQuestion = () => {
+  const messages = [
+    '他に聞きたいことがあれば、きいてね。',
+    'ほかに質問あれば、どうぞ',
+    '他に何か聞く？',
+    'ほかなんかある？'
+  ]
+  return randomResponse.getRandomMessage(messages)
+}
+const getRepromptText = () => {
+  const messages = [
+    '聞きたいことがあれば話しかけてね。何もなければ、「終了」と言ってね。',
+    '何もなければ、「終了」と言ってね。',
+    'ききたいことない？なかったら「終了」て言ってくれたら終わるで。'
+  ]
+}
+
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
     return intentHandlers.canHandle(handlerInput, 'LaunchRequest')
@@ -13,8 +32,23 @@ const LaunchRequestHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
+      .reprompt(getRepromptText())
       .withSimpleCard('Hello World', speechText)
+      .getResponse();
+  },
+};
+
+const YesIntentHandler = {
+  canHandle(handlerInput) {
+    return intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AMAZON.YesIntent')
+  },
+  handle(handlerInput) {
+    const speechText = 'なにについて聞きたいですか？'
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(getRepromptText())
+      .withSimpleCard('準備中やねん', speechText)
       .getResponse();
   },
 };
@@ -24,10 +58,15 @@ const AskLunchIntentHandler = {
     return intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AskLunchIntent')
   },
   handle(handlerInput) {
-    const speechText = 'スタバでも行けばいいんじゃないかな。';
+    const { getRandomLunchRestaurant } = require('./libs/lunch')
+    const lunchType = 'カフェ'
+    const speechText = getRandomLunchRestaurant(lunchType);
+    const ask = getAskAnyMoreQuestion()
+    const reprompt = getRepromptText()
 
     return handlerInput.responseBuilder
-      .speak(speechText)
+      .speak(`${speechText}${ask}`)
+      .reprompt(speechText)
       .withSimpleCard('準備中やねん', speechText)
       .getResponse();
   },
@@ -43,7 +82,7 @@ const HelpIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
+      .reprompt(getRepromptText())
       .withSimpleCard('Hello World', speechText)
       .getResponse();
   },
@@ -51,12 +90,13 @@ const HelpIntentHandler = {
 
 const CancelAndStopIntentHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && (handlerInput.requestEnvelope.request.intent.name === 'AMAZON.CancelIntent'
-        || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
+    if (intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AMAZON.NoIntent')) return true
+    if (intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AMAZON.CancelIntent')) return true
+    if (intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AMAZON.StopIntent')) return true
+    return false
   },
   handle(handlerInput) {
-    const speechText = 'Goodbye!';
+    const speechText = 'じゃあの。';
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -85,7 +125,7 @@ const ErrorHandler = {
 
     return handlerInput.responseBuilder
       .speak('Sorry, I can\'t understand the command. Please say again.')
-      .reprompt('Sorry, I can\'t understand the command. Please say again.')
+      .reprompt(getRepromptText())
       .getResponse();
   },
 };
@@ -96,6 +136,7 @@ exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
     AskLunchIntentHandler,
+    YesIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler

@@ -55,6 +55,14 @@
             "お昼を食べれるお店",
             "お昼ご飯を食べたい"
           ]
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
         }
       ]
     }
