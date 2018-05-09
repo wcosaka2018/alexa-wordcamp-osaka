@@ -2,7 +2,7 @@
 /* eslint-disable  no-console */
 
 const Alexa = require('ask-sdk-core');
-const { randomResponse, intentHandlers } = require('ask-utils')
+const { randomResponse, intentHandlers, slotManager } = require('ask-utils')
 
 const ASK_ANY_MORE_TEXT = '他に聞きたいことはありますか？'
 
@@ -58,8 +58,8 @@ const AskLunchIntentHandler = {
     return intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AskLunchIntent')
   },
   handle(handlerInput) {
+    const lunchType = slotManager.getSlotValueByName(handlerInput, 'lunchType') || 'カフェ'
     const { getRandomLunchRestaurant } = require('./libs/lunch')
-    const lunchType = 'カフェ'
     const speechText = getRandomLunchRestaurant(lunchType);
     const ask = getAskAnyMoreQuestion()
     const reprompt = getRepromptText()
