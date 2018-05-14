@@ -91,6 +91,21 @@ const YesIntentHandler = {
   }
 }
 
+const AskSessionIntentHandler = {
+  canHandle (handlerInput) {
+    return intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AskSessionIntent')
+  },
+  handle (handlerInput) {
+    const { getSessionAnnounceTexts } = require('./libs/sessions')
+    const time = getSlotByName(handlerInput, 'time')
+    const speechText = getSessionAnnounceTexts(time.value)
+    return handlerInput.responseBuilder
+      .speak(speechText + '他に聞きたいことはありますか？')
+      .reprompt(getRepromptText())
+      .getResponse()
+  }
+}
+
 const AskLunchIntentHandler = {
   canHandle (handlerInput) {
     return intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AskLunchIntent')
@@ -148,6 +163,7 @@ const SessionEndedRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest'
   },
   handle (handlerInput) {
+    console.log(getErrorMessage(handlerInput))
     console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`)
 
     return handlerInput.responseBuilder.getResponse()
@@ -159,6 +175,7 @@ const ErrorHandler = {
     return true
   },
   handle (handlerInput, error) {
+    console.log(getErrorMessage(handlerInput))
     console.log(`Error handled: ${error.message}`)
 
     return handlerInput.responseBuilder
@@ -173,6 +190,7 @@ const skillBuilder = Alexa.SkillBuilders.custom()
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
+    AskSessionIntentHandler,
     AskLunchIntentHandler,
     YesIntentHandler,
     HelpIntentHandler,
