@@ -23,134 +23,134 @@ module.exports = {
   },
   '11:05': {
     '701': {
-      title: '',
-      speaker: ''
+      title: '実録 情熱と苦悩のテーマ・プラグインビジネス',
+      speaker: '石川栄和'
     },
     '702': {
-      title: '',
-      speaker: ''
+      title: 'WordPress導入で変わったNPOのweb運用とその後',
+      speaker: 'Kitakado_h'
     },
     '703': {
-      title: '',
-      speaker: ''
+      title: 'メイン武器として使うためのWordPress',
+      speaker: 'Ippei Sumida'
     },
     '704': {
-      title: '',
-      speaker: ''
+      title: 'WordCampの作り方、そしてWordCamp Japanリニューアル〜チームでするコントリビュート',
+      speaker: '小原 千秋, Junko Nukaga'
     },
     '8階': {
-      title: '',
-      speaker: ''
+      title: 'Google 検索最新情報 2018（ WordCamp 版）',
+      speaker: 'Takeaki Kanaya'
     }
   },
   '12:00': {
     '701': {
-      title: '',
-      speaker: ''
+      title: '英語を見るだけでクラクラしていた私が、多言語サイトデザイナーになってしまった話',
+      speaker: 'Kamino'
     },
     '702': {
-      title: '',
-      speaker: ''
+      title: 'WP-CLI を活用したメンテナンスフリーな WordPress の管理運用',
+      speaker: '木谷 公哉'
     },
     '703': {
-      title: '',
-      speaker: ''
+      title: 'プラグインの開発とアドオン販売まで',
+      speaker: 'Katsushi Kawamori'
     },
     '704': {
-      title: '',
-      speaker: ''
+      title: 'WordPressとkintone連携 ー問い合わせから顧客管理まで「ムダのない」業務システムを作る',
+      speaker: 'Takashi Hosoya'
     },
     '8階': {
-      title: '',
-      speaker: ''
+      title: 'WordPressで作る文化財情報データベース',
+      speaker: 'FUTAGAMI Yoko, MISHIMA Taiki, Oyamada Tomohiro'
     }
   },
   '13:40': {
     '701': {
-      title: '',
-      speaker: ''
+      title: 'WordPressにMachine Learningの力を',
+      speaker: 'Takuya Oketani'
     },
     '702': {
-      title: '',
-      speaker: ''
+      title: '技術顧問の現場から 〜 現場カイゼンのススメ',
+      speaker: 'mikakane'
     },
     '703': {
-      title: '',
-      speaker: ''
+      title: 'マーケティングを考えるとWebサイトが見えてくる！',
+      speaker: 'Tomohiro Inaba'
     },
     '704': {
-      title: '',
-      speaker: ''
+      title: 'WordBench 長野の取り組みと、コミュニティづくりについて考えたこと。',
+      speaker: 'とろゆに'
     },
     '8階': {
-      title: '',
-      speaker: ''
+      title: 'プラグイン開発の理想と現実 (主に現実) 2018年度版',
+      speaker: '三好 隆之'
     }
   },
   '14:35': {
     '701': {
-      title: '',
-      speaker: ''
+      title: '中規模案件のこなしかた DockerとCI、テスト',
+      speaker: 'yousan'
     },
     '702': {
-      title: '',
-      speaker: ''
+      title: '「ブログを1年継続する」という壁を越えるために',
+      speaker: 'you'
     },
     '703': {
-      title: '',
-      speaker: ''
+      title: 'Gutenbergで作るランディングページ',
+      speaker: '小野隆士'
     },
     '704': {
-      title: '',
-      speaker: ''
+      title: 'レンタルサーバを落とさない、WordPressとレンサバのお付き合いのコツ',
+      speaker: '谷口元紀'
     },
     '8階': {
-      title: '',
-      speaker: ''
+      title: '100%GPLの有料テーマ販売をビジネスとして成立させるための挑戦',
+      speaker: 'キタジマタカシ'
     }
   },
   '15:30': {
     '701': {
-      title: '',
-      speaker: ''
+      title: 'コワーキングスペースのWebサイトを有料テーマでリニューアルした理由と、改めて感じたWordPressのごっつええところ',
+      speaker: '岡田 大誠'
     },
     '702': {
-      title: '',
-      speaker: ''
+      title: 'VPSやレンサバのままでAWSを用いてセキュリティやパフォーマンスを強化する',
+      speaker: 'shogomuranushi'
     },
     '703': {
-      title: '',
-      speaker: ''
+      title: 'Gutenbergで変わるWordPressエディタのカスタマイズ',
+      speaker: 'Okamoto Hidetaka'
     },
     '704': {
-      title: '',
-      speaker: ''
+      title: 'どれだけかかるの？ WordPressでウェブサイト制作、お見積の実際',
+      speaker: '深沢 幸治郎'
     },
     '8階': {
-      title: '',
-      speaker: ''
+      title: 'WooCommerce development and extensions use for Japanese cases (to be determined)',
+      speaker: 'Fulvio Notarstefano, Shohei Tanaka'
     }
   },
   '16:25': {
     '701': {
-      title: '',
-      speaker: ''
+      title: 'コードを書かずに簡単設定が嬉しい！WordPressのカスタマイザー機能を使ったテーマとプラグインでウェブサイト制作の効率化を図ろう',
+      speaker: 'Tetsuya Imamura'
     },
     '702': {
-      title: '',
-      speaker: ''
+      title: 'とあるデザイナーのキャリアパスから考える「デザイナーのキャリア」',
+      speaker: 'ggoottoouu'
     },
     '703': {
-      title: '',
-      speaker: ''
+      title: 'より安心できるWordPressの運用ノウハウ',
+      speaker: '堀江 圭介'
     },
     '704': {
-      title: '',
+      title: '座談会',
       speaker: ''
     },
     '8階': {
-      title: '',
-      speaker: ''
+      title: 'Giving back to the Community',
+      speaker: 'Lincoln Islam'
     }
   },
   '17:20': {

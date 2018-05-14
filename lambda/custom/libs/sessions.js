@@ -36,7 +36,8 @@ const getSessionAnnounceTexts = (time = '') => {
   const text = Object.keys(sessions).map(room => {
     const session = sessions[room]
     if (!session || Object.keys(session).length === 0 || !session.title) return ''
-    return `${room}では、${session.speaker}さんによる「${session.title}」が予定されています。`
+    const speaker = session.speaker ? `${session.speaker}さんによる` : ''
+    return `${room}では、${speaker}「${session.title}」が予定されています。`
   })
   return `${nextSessionTime}から始まるセッションは、次の通りです。${text}`
 }
