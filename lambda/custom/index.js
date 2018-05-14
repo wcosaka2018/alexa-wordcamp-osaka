@@ -1,8 +1,9 @@
 /* eslint-disable  func-names */
 /* eslint-disable  no-console */
 
-const Alexa = require('ask-sdk-core');
+const Alexa = require('ask-sdk-core')
 const { randomResponse, intentHandlers, slotManager } = require('ask-utils')
+const { getResolutionSlotParam, getSlotByName } = slotManager
 
 const ASK_ANY_MORE_TEXT = '他に聞きたいことはありますか？'
 
@@ -21,116 +22,153 @@ const getRepromptText = () => {
     '何もなければ、「終了」と言ってね。',
     'ききたいことない？なかったら「終了」て言ってくれたら終わるで。'
   ]
+  return randomResponse.getRandomMessage(messages)
 }
+/* [start] Utility function before added ask-utils */
+const getRequest = handlerInput => {
+  if (
+    handlerInput &&
+    handlerInput.requestEnvelope &&
+    handlerInput.requestEnvelope.request
+  ) {
+    return handlerInput.requestEnvelope.request
+  }
+  return {}
+}
+const getDialogState = (handlerInput) => {
+  const request = getRequest(handlerInput)
+  console.log(request)
+  const { dialogState } = request
+  return dialogState || ''
+}
+const getIntent = handlerInput => {
+  const request = getRequest(handlerInput)
+  if (request && Object.keys(request).length > 0 && request.intent) return request.intent
+  return {}
+}
+const getSlotValue = (handlerInput, name) => {
+  const slot = getSlotByName(handlerInput, name)
+  const resolutionSlot = getResolutionSlotParam(slot)
+  const slotValue = resolutionSlot && Object.keys(resolutionSlot).length === 0 ? slot.value : resolutionSlot
+  return slotValue
+}
+const getErrorMessage = handlerInput => {
+  const request = getRequest(handlerInput)
+  if (request && Object.keys(request).length > 0) {
+    return request.error || {}
+  }
+  return {}
+}
+/* [end] Utility function before added ask-utils */
 
 const LaunchRequestHandler = {
-  canHandle(handlerInput) {
+  canHandle (handlerInput) {
     return intentHandlers.canHandle(handlerInput, 'LaunchRequest')
   },
-  handle(handlerInput) {
-    const speechText = 'ワードキャンプ大阪スキルへようこそ。ランチ情報とか聞けるよ。';
+  handle (handlerInput) {
+    const speechText = 'ワードキャンプ大阪スキルへようこそ。ランチ情報とか聞けるよ。'
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(getRepromptText())
       .withSimpleCard('Hello World', speechText)
-      .getResponse();
-  },
-};
+      .getResponse()
+  }
+}
 
 const YesIntentHandler = {
-  canHandle(handlerInput) {
+  canHandle (handlerInput) {
     return intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AMAZON.YesIntent')
   },
-  handle(handlerInput) {
+  handle (handlerInput) {
     const speechText = 'なにについて聞きたいですか？'
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(getRepromptText())
       .withSimpleCard('準備中やねん', speechText)
-      .getResponse();
-  },
-};
+      .getResponse()
+  }
+}
 
 const AskLunchIntentHandler = {
-  canHandle(handlerInput) {
+  canHandle (handlerInput) {
     return intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AskLunchIntent')
   },
-  handle(handlerInput) {
+  handle (handlerInput) {
     const lunchType = slotManager.getSlotValueByName(handlerInput, 'lunchType') || 'カフェ'
     const { getRandomLunchRestaurant } = require('./libs/lunch')
-    const speechText = getRandomLunchRestaurant(lunchType);
+    const speechText = getRandomLunchRestaurant(lunchType)
     const ask = getAskAnyMoreQuestion()
     const reprompt = getRepromptText()
 
     return handlerInput.responseBuilder
       .speak(`${speechText}${ask}`)
-      .reprompt(speechText)
+      .reprompt(reprompt)
       .withSimpleCard('準備中やねん', speechText)
-      .getResponse();
-  },
-};
+      .getResponse()
+  }
+}
 
 const HelpIntentHandler = {
-  canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+      handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent'
   },
-  handle(handlerInput) {
-    const speechText = 'You can say hello to me!';
+  handle (handlerInput) {
+    const speechText = 'You can say hello to me!'
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(getRepromptText())
       .withSimpleCard('Hello World', speechText)
-      .getResponse();
-  },
-};
+      .getResponse()
+  }
+}
 
 const CancelAndStopIntentHandler = {
-  canHandle(handlerInput) {
+  canHandle (handlerInput) {
     if (intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AMAZON.NoIntent')) return true
     if (intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AMAZON.CancelIntent')) return true
     if (intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AMAZON.StopIntent')) return true
     return false
   },
-  handle(handlerInput) {
-    const speechText = 'じゃあの。';
+  handle (handlerInput) {
+    const speechText = 'じゃあの。'
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .withSimpleCard('Hello World', speechText)
-      .getResponse();
-  },
-};
+      .getResponse()
+  }
+}
 
 const SessionEndedRequestHandler = {
-  canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest';
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest'
   },
-  handle(handlerInput) {
-    console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`);
+  handle (handlerInput) {
+    console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`)
 
-    return handlerInput.responseBuilder.getResponse();
-  },
-};
+    return handlerInput.responseBuilder.getResponse()
+  }
+}
 
 const ErrorHandler = {
-  canHandle() {
-    return true;
+  canHandle () {
+    return true
   },
-  handle(handlerInput, error) {
-    console.log(`Error handled: ${error.message}`);
+  handle (handlerInput, error) {
+    console.log(`Error handled: ${error.message}`)
 
     return handlerInput.responseBuilder
       .speak('Sorry, I can\'t understand the command. Please say again.')
       .reprompt(getRepromptText())
-      .getResponse();
-  },
-};
+      .getResponse()
+  }
+}
 
-const skillBuilder = Alexa.SkillBuilders.custom();
+const skillBuilder = Alexa.SkillBuilders.custom()
 
 exports.handler = skillBuilder
   .addRequestHandlers(
@@ -142,4 +180,4 @@ exports.handler = skillBuilder
     SessionEndedRequestHandler
   )
   .addErrorHandlers(ErrorHandler)
-  .lambda();
+  .lambda()
