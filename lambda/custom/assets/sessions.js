@@ -9,7 +9,7 @@ module.exports = {
       speaker: '岡本恵典'
     },
     '703': {
-      title: 'サーバーレス WordPess ―― 2018年のウェブの話をしよう',
+      title: 'サーバーレス WordPress ―― 2018年のウェブの話をしよう',
       speaker: '榊原昌彦'
     },
     '704': {

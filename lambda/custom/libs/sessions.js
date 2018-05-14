@@ -9,8 +9,30 @@ const getSessionTimeLists = () => {
   return Object.keys(lists)
 }
 
+const sessionSearchTime = (time = '') => {
+  const targetTime = handleTimeAlias(time)
+  if (!/^0/.test(targetTime)) return targetTime
+  const hhmm = targetTime.split(':')
+  const hh = Number(hhmm[0])
+  if (hh > 8) return targetTime
+  const patchHour = hh + 12
+  return `${patchHour}:${hhmm[1]}`
+}
+module.exports.sessionSearchTime = sessionSearchTime
+
+const handleTimeAlias = (time) => {
+  switch (time) {
+    case 'MO':
+      return '10:00'
+    case 'AF':
+      return '12:00'
+    default:
+      return time
+  }
+}
+
 const getNextSessionTime = (time = '') => {
-  const target = moment(time, 'HH:mm')
+  const target = moment(sessionSearchTime(time), 'HH:mm')
   const timeLists = getSessionTimeLists()
   for (let i = 0; i < timeLists.length; i++) {
     const time = timeLists[i]

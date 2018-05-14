@@ -98,6 +98,7 @@ const AskSessionIntentHandler = {
   handle (handlerInput) {
     const { getSessionAnnounceTexts } = require('./libs/sessions')
     const time = getSlotByName(handlerInput, 'time')
+    console.log(time)
     const speechText = getSessionAnnounceTexts(time.value)
     return handlerInput.responseBuilder
       .speak(speechText + '他に聞きたいことはありますか？')
