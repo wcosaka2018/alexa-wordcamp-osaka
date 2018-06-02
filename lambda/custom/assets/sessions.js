@@ -137,8 +137,8 @@ module.exports = {
       speaker: 'Tetsuya Imamura'
     },
     '702': {
-      title: 'とあるデザイナーのキャリアパスから考える「デザイナーのキャリア」',
-      speaker: 'ggoottoouu'
+      title: '今のデザイナーに求められるスキルとマインド',
+      speaker: 'ゴトウジュンイチ'
     },
     '703': {
       title: 'より安心できるWordPressの運用ノウハウ',
