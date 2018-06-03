@@ -66,7 +66,12 @@ const LaunchRequestHandler = {
     return intentHandlers.canHandle(handlerInput, 'LaunchRequest')
   },
   handle (handlerInput) {
-    const speechText = 'ワードキャンプ大阪スキルへようこそ。ランチ情報とか聞けるよ。'
+    const messages = [
+      '「次のセッションを教えて。」と聞いてみてください。',
+      'ランチ情報とか聞けるよ。',
+      '「近くのお店を教えて。」と聞くと、お店の情報をおしらせします。'
+    ]
+    const speechText = 'ワードキャンプ大阪スキルへようこそ。' + randomResponse.getRandomMessage(messages)
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -132,8 +137,12 @@ const HelpIntentHandler = {
       handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent'
   },
   handle (handlerInput) {
-    const speechText = 'You can say hello to me!'
-
+    const messages = [
+      '「次のセッションを教えて。」と聞いてみてください。',
+      'ランチ情報とか聞けるよ。',
+      '「近くのお店を教えて。」と聞くと、お店の情報をおしらせします。'
+    ]
+    const speechText = 'ワードキャンプ大阪について紹介するスキルです。' + randomResponse.getRandomMessage(messages)
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(getRepromptText())
@@ -150,7 +159,12 @@ const CancelAndStopIntentHandler = {
     return false
   },
   handle (handlerInput) {
-    const speechText = 'じゃあの。'
+    const messages = [
+      'じゃあの',
+      'ありがとう。楽しんでください。',
+      'また次のセッションが気になった時はぜひ遊びに来てください。'
+    ]
+    const speechText = randomResponse.getRandomMessage(messages)
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -176,11 +190,12 @@ const ErrorHandler = {
     return true
   },
   handle (handlerInput, error) {
+    console.log(handlerInput)
     console.log(getErrorMessage(handlerInput))
     console.log(`Error handled: ${error.message}`)
 
     return handlerInput.responseBuilder
-      .speak('Sorry, I can\'t understand the command. Please say again.')
+      .speak('ごめんなさい。ちょっと聞き取れませんでした。')
       .reprompt(getRepromptText())
       .getResponse()
   }

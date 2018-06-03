@@ -2,7 +2,7 @@ module.exports = {
   '10:10': {
     '701': {
       title: 'WordPressのニュースのソース大全',
-      speaker: 'ShinichiN'
+      speaker: 'にしかわしんいち'
     },
     '702': {
       title: '家族を養うブログを作るのに必要な知識、全部教えます。',
@@ -14,11 +14,11 @@ module.exports = {
     },
     '704': {
       title: '僕がWordPressでやったことヒストリー',
-      speaker: '久次昌志'
+      speaker: 'ひさつぐ昌志'
     },
     '8階': {
       title: 'necco LunchをAlexaで入力！ウーコマース + Apple Pay + Pay with Googleで決済！',
-      speaker: 'Fumito Abe'
+      speaker: 'あべふみと'
     }
   },
   '11:05': {
@@ -28,7 +28,7 @@ module.exports = {
     },
     '702': {
       title: 'WordPress導入で変わったNPOのweb運用とその後',
-      speaker: 'Kitakado_h'
+      speaker: 'きたかど'
     },
     '703': {
       title: 'メイン武器として使うためのWordPress',
@@ -36,17 +36,17 @@ module.exports = {
     },
     '704': {
       title: 'WordCampの作り方、そしてWordCamp Japanリニューアル〜チームでするコントリビュート',
-      speaker: '小原 千秋, Junko Nukaga'
+      speaker: '小原 千秋, 額賀純子'
     },
     '8階': {
       title: 'Google 検索最新情報 2018（ WordCamp 版）',
-      speaker: 'Takeaki Kanaya'
+      speaker: 'かなや'
     }
   },
   '12:00': {
     '701': {
       title: '英語を見るだけでクラクラしていた私が、多言語サイトデザイナーになってしまった話',
-      speaker: 'Kamino'
+      speaker: 'かみの'
     },
     '702': {
       title: 'WP-CLI を活用したメンテナンスフリーな WordPress の管理運用',
@@ -54,11 +54,11 @@ module.exports = {
     },
     '703': {
       title: 'プラグインの開発とアドオン販売まで',
-      speaker: 'Katsushi Kawamori'
+      speaker: 'かわもり'
     },
     '704': {
       title: 'WordPressとkintone連携 ー問い合わせから顧客管理まで「ムダのない」業務システムを作る',
-      speaker: 'Takashi Hosoya'
+      speaker: 'ほそや'
     },
     '8階': {
       title: 'WordPressで作る文化財情報データベース',
