@@ -27,7 +27,7 @@ const handleTimeAlias = (time) => {
     case 'AF':
       return '12:00'
     default:
-      return time
+      return time || moment().add(9, 'hours').format('HH:mm')
   }
 }
 
