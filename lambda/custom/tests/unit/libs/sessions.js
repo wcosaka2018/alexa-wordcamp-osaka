@@ -40,7 +40,7 @@ describe('libs/session.js', () => {
       assert.deepEqual(result, {
         '701': {
           title: 'WordPressのニュースのソース大全',
-          speaker: 'ShinichiN'
+          speaker: 'にしかわしんいち'
         },
         '702': {
           title: '家族を養うブログを作るのに必要な知識、全部教えます。',
@@ -52,11 +52,11 @@ describe('libs/session.js', () => {
         },
         '704': {
           title: '僕がWordPressでやったことヒストリー',
-          speaker: '久次昌志'
+          speaker: 'ひさつぐ昌志'
         },
         '8階': {
           title: 'necco LunchをAlexaで入力！ウーコマース + Apple Pay + Pay with Googleで決済！',
-          speaker: 'Fumito Abe'
+          speaker: 'あべふみと'
         }
       })
     })

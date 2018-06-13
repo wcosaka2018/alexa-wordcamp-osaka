@@ -101,10 +101,12 @@ const AskSessionIntentHandler = {
     return intentHandlers.canHandle(handlerInput, 'IntentRequest', 'AskSessionIntent')
   },
   handle (handlerInput) {
+    console.log('==[start]AskSession===')
     const { getSessionAnnounceTexts } = require('./libs/sessions')
     const time = getSlotByName(handlerInput, 'time')
     console.log(time)
     const speechText = getSessionAnnounceTexts(time.value)
+    console.log('==[end]AskSession===')
     return handlerInput.responseBuilder
       .speak(speechText + '他に聞きたいことはありますか？')
       .reprompt(getRepromptText())
